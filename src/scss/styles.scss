@@ -1,7 +1,7 @@
 // Table of Contents
 // =============================================================================
 // 1. Imports
-// 2. Declarations
+// 2. Reset
 
 // Imports
 // =============================================================================
@@ -9,11 +9,19 @@
 @import './functions/to-rem';
 @import './mixins/display-p3';
 
-// Declarations
+// Reset
 // =============================================================================
 body {
   @include display-p3(background-color, $nero);
-  @include display-p3(color, $snow);
-  font-family: $font-family-system;
-  font-size: to-rem(16px);
+  font-family: $font-family-system; // ?? might not be necessary if everything is individually styled.
+}
+
+.embed form {
+  // ?? might not be specific enough to overwrite what is in place.
+  box-sizing: border-box;
+  width: 100%;
+  // max-width: 768px; tablet or dektop breakpoint.
+  padding-right: to-rem(24px);
+  padding-left: to-rem(24px);
+  margin: 0 auto !important;
 }
