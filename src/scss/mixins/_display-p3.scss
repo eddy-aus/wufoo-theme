@@ -1,6 +1,6 @@
 @import '../functions/to-display-p3';
 
-@mixin display-p3($property, $color) {
-  #{$property}: $color;
-  #{$property}: to-display-p3($color);
+@mixin display-p3($property, $color, $flag: '') {
+  #{$property}: $color unquote($flag);
+  #{$property}: to-display-p3($color) unquote($flag);
 }

@@ -11,17 +11,37 @@
 
 // Reset
 // =============================================================================
-body {
-  @include display-p3(background-color, $nero);
+.wufoo {
   font-family: $font-family-system; // ?? might not be necessary if everything is individually styled.
 }
 
-.embed form {
-  // ?? might not be specific enough to overwrite what is in place.
+.embed .wufoo {
   box-sizing: border-box;
   width: 100%;
   // max-width: 768px; tablet or dektop breakpoint.
   padding-right: to-rem(24px);
+  padding-bottom: 0;
   padding-left: to-rem(24px);
   margin: 0 auto !important;
+}
+
+.wufoo .info {
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.wufoo .info h2 {
+  margin-bottom: 0;
+  @include display-p3(color, $snow, !important);
+}
+
+.wufoo li {
+  width: 100%;
+  padding: 0;
+}
+
+.wufoo label.desc {
+  padding-bottom: 0;
 }
