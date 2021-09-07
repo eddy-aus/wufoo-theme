@@ -1,27 +1,27 @@
 // Table of Contents
-// =============================================================================
+// -----------------------------------------------------------------------------
 // 1. Imports
 // 2. Reset
 
 // Imports
-// =============================================================================
+// -----------------------------------------------------------------------------
 @import './utils/tokens';
 @import './functions/to-rem';
+@import './mixins/breakpoint';
 @import './mixins/display-p3';
 
 // Reset
-// =============================================================================
+// -----------------------------------------------------------------------------
 .wufoo {
-  font-family: $font-family-system; // ?? might not be necessary if everything is individually styled.
+  font-family: $font-family-system; // Update this to brand typeface
 }
 
 .embed .wufoo {
   box-sizing: border-box;
   width: 100%;
-  // max-width: 768px; tablet or dektop breakpoint.
-  padding-right: to-rem(24px);
+  padding-right: to-rem(16px);
   padding-bottom: 0;
-  padding-left: to-rem(24px);
+  padding-left: to-rem(16px);
   margin: 0 auto !important;
 }
 
@@ -42,6 +42,30 @@
   padding: 0;
 }
 
+.wufoo li.buttons {
+  width: 100% !important;
+  padding: 0;
+}
+
 .wufoo label.desc {
   padding-bottom: 0;
+}
+
+.wufoo input:focus-visible {
+  outline: none;
+}
+
+@include breakpoint(s) {
+  .embed .wufoo {
+    padding-right: to-rem(24px);
+    padding-left: to-rem(24px);
+  }
+}
+
+@include breakpoint(m) {
+  .embed .wufoo {
+    max-width: to-rem(848px);
+    padding-right: to-rem(40px);
+    padding-left: to-rem(40px);
+  }
 }
