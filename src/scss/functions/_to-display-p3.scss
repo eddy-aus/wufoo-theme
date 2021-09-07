@@ -1,0 +1,16 @@
+@function to-display-p3($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+  $a: alpha($color);
+
+  $statement: 'color(display-p3 #{$r / 255} #{$g / 255} #{$b / 255}';
+
+  @if $a != 1 {
+    $statement: $statement + ' / #{$a * 100%}';
+  }
+
+  $statement: $statement + ')';
+
+  @return unquote($statement);
+}

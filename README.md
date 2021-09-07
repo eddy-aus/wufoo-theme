@@ -1,2 +1,3 @@
-# wufoo-theme
-A CSS Theme for Wufoo Forms
+# Wufoo Theme
+
+Eddy's CSS Theme for Wufoo Forms.

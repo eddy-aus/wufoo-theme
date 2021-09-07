@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Distribution directory
+dist/
+
+# Hidden directories
+.*/**
+!.github/workflows/**
+
+# Ignore files
+.*ignore
+
+# Log files
+*.log
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Package files
+yarn.lock
+
+# Run Command files
+.*rc

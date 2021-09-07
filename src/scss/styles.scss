@@ -1,0 +1,19 @@
+// Table of Contents
+// =============================================================================
+// 1. Imports
+// 2. Declarations
+
+// Imports
+// =============================================================================
+@import './utils/tokens';
+@import './functions/to-rem';
+@import './mixins/display-p3';
+
+// Declarations
+// =============================================================================
+body {
+  @include display-p3(background-color, $nero);
+  @include display-p3(color, $snow);
+  font-family: $font-family-system;
+  font-size: to-rem(16px);
+}
