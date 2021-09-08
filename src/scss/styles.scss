@@ -49,19 +49,22 @@
 }
 
 .wufoo input {
+  box-sizing: border-box;
   padding-top: 0;
   padding-bottom: 0;
 }
 
 .wufoo input:focus-visible {
-  box-sizing: border-box;
   outline: none;
 }
 
-.wufoo textarea:focus-visible {
+.wufoo textarea {
   box-sizing: border-box;
-  outline: none;
   resize: none;
+}
+
+.wufoo textarea:focus-visible {
+  outline: none;
 }
 
 @include breakpoint(s) {
@@ -86,7 +89,6 @@
 }
 
 .wufoo .#{$ns}-input label {
-  // position: relative;
   margin-bottom: to-rem(4px);
   margin-left: to-rem(8px);
   @include display-p3(color, $color-gray-3, !important);
@@ -101,16 +103,43 @@
 }
 
 .wufoo .#{$ns}-input label span {
-  // position: absolute;
   @include display-p3(color, $color-neon-harlequin, !important);
   font-weight: inherit;
 }
 
-.wufoo .#{$ns}-input.#{$ns}-input--text input {
+.wufoo .#{$ns}-input.#{$ns}-input--text div {
   position: relative;
-  box-sizing: border-box;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text div::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: to-rem(-3px);
+  left: to-rem(-3px);
+  display: block;
+  height: calc(100% + #{to-rem(6px)});
+  width: calc(100% + #{to-rem(6px)});
+  max-width: to-rem(326px);
+  border-radius: to-rem(11px);
+  @include display-p3(background-color, $color-nero);
+  box-shadow: 0 0 0 0 $color-focus-outline;
+  transition: box-shadow 300ms ease;
+  pointer-events: none;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text:focus-within div::before {
+  box-shadow: 0 0 0 to-rem(5px) $color-focus-outline;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text input {
   height: to-rem(64px);
-  padding: to-rem(20px 16px);
+
+  // These will need to omitted if text-input width needs to be configurable
+  width: 100%;
+  max-width: to-rem(320px);
+
+  padding: to-rem(20px) to-rem(16px);
   @include display-p3(border-color, $color-gray-3);
   border-radius: to-rem(8px);
   border-style: solid;
@@ -126,33 +155,14 @@
 
 .wufoo .#{$ns}-input.#{$ns}-input--text input:focus {
   @include display-p3(border-color, $color-gray-1);
+  outline: none;
   @include display-p3(background-color, $color-gray-9);
   @include display-p3(color, $color-gray-0, !important);
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text input::after {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  top: to-rem(-3px);
-  left: to-rem(-3px);
-  display: block;
-  height: calc(100% + #{to-rem(6px)});
-  width: calc(100% + #{to-rem(6px)});
-  border-radius: to-rem(11px);
-  @include display-p3(background-color, $color-nero);
-  box-shadow: 0 0 0 0 $color-focus-outline;
-  transition: box-shadow 300ms ease;
-  pointer-events: none;
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text input:focus::after {
-  box-shadow: 0 0 0 to-rem(5px) $color-focus-outline;
 }
 
 @include has-mouse() {
   .wufoo .#{$ns}-input.#{$ns}-input--text input {
     height: to-rem(48px);
-    padding: to-rem(12px 16px);
+    padding: to-rem(12px) to-rem(16px);
   }
 }
