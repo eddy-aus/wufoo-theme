@@ -102,8 +102,6 @@
 }
 
 .wufoo .#{$ns}-input label {
-  display: inline-block;
-  margin-bottom: to-rem(4px);
   margin-left: to-rem(8px);
   @include display-p3(color, $color-gray-3, !important);
   font-size: $font-size-xxxs;
@@ -138,16 +136,18 @@
   // These props will need to be omitted if text-input's width need to be
   // configurable.
   width: calc(100% + #{to-rem(6px)});
-  max-width: to-rem(326px);
+  max-width: to-rem(366px);
 
   border-radius: to-rem(11px);
   @include display-p3(background-color, $color-nero);
+  box-shadow: 0 0 0 0 rgba($color-focus-outline, 0);
   box-shadow: 0 0 0 0 to-display-p3(rgba($color-focus-outline, 0));
-  transition: box-shadow 250ms ease;
+  transition: box-shadow 250ms cubic-bezier(0.6, 0, 0.5, 1.4);
   pointer-events: none;
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--text:focus-within div::before {
+  box-shadow: 0 0 0 to-rem(5px) $color-focus-outline;
   box-shadow: 0 0 0 to-rem(5px) to-display-p3($color-focus-outline);
 }
 
@@ -157,13 +157,14 @@
   // These props will need to be omitted if text-input's width need to be
   // configurable.
   width: 100%;
-  max-width: to-rem(320px);
+  max-width: to-rem(360px);
 
   padding: to-rem(20px) to-rem(16px);
   @include display-p3(border-color, $color-gray-3);
   border-radius: to-rem(8px);
   border-style: solid;
   border-width: to_rem(2px);
+  margin-top: to-rem(4px);
   background-color: transparent;
   @include display-p3(color, $color-gray-2, !important);
   font-size: $font-size-xs !important;
@@ -180,6 +181,10 @@
   @include display-p3(color, $color-gray-0, !important);
 }
 
+.wufoo .#{$ns}-input.#{$ns}-input--text input::placeholder::before {
+  content: '    ';
+}
+
 .wufoo .#{$ns}-input.#{$ns}-input--text input::selection {
   @include display-p3(background-color, $color-neon-harlequin);
   @include display-p3(color, $color-nero);
@@ -189,11 +194,30 @@
   // These props will need to be omitted if text-input's width need to be
   // configurable.
   width: calc(100% - #{to-rem(16px)});
-  max-width: to-rem(304px);
+  max-width: to-rem(344px);
 
   margin-left: to-rem(8px);
+  @include display-p3(color, $color-gray-5);
+  font-size: $font-size-xxxs;
+  line-height: to-rem(20px);
   pointer-events: none;
   user-select: none;
+}
+
+@supports (display: flex) {
+  .wufoo .#{$ns}-input {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wufoo .#{$ns}-input.#{$ns}-input--text div {
+    order: 3;
+  }
+
+  .wufoo .#{$ns}-input.#{$ns}-input--text .instruct {
+    order: 2;
+    margin-bottom: to-rem(4px);
+  }
 }
 
 @include has-mouse() {
