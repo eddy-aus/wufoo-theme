@@ -15,6 +15,10 @@
 
 // 2. Reset
 // -----------------------------------------------------------------------------
+.embed {
+  overflow: initial;
+}
+
 .embed #container {
   margin-bottom: 0;
 }
@@ -219,10 +223,14 @@
   max-width: to-rem(344px);
 
   margin-left: to-rem(8px);
+  line-height: to-rem(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text .instruct small {
   @include display-p3(color, $color-gray-5);
   font-size: $font-size-xxxs;
-  line-height: to-rem(16px);
-  user-select: none;
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--text .error {
@@ -231,11 +239,13 @@
   width: calc(100% - #{to-rem(16px)});
   max-width: to-rem(344px);
 
-  margin-left: to-rem(8px);
-  @include display-p3(color, $color-gray-5);
+  padding-top: 0 !important;
+  margin-left: to-rem(8px) !important;
+  @include display-p3(color, $color-gray-5, !important);
   font-size: $font-size-xxxs;
   font-weight: $font-weight-regular;
-  line-height: to-rem(24px) !important;
+  line-height: to-rem(20px) !important;
+  pointer-events: none;
   user-select: none;
 }
 
@@ -257,7 +267,7 @@
 
   .wufoo .#{$ns}-input.#{$ns}-input--text .error {
     order: 4;
-    margin-top: to-rem(4px);
+    margin-top: to-rem(4px) !important;
   }
 }
 
