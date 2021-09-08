@@ -87,11 +87,17 @@
 
 .wufoo .#{$ns}-input label {
   // position: relative;
-  margin-bottom: to-rem(4px); // might need to be padding ??
+  margin-bottom: to-rem(4px);
+  margin-left: to-rem(8px);
   @include display-p3(color, $color-gray-3, !important);
   font-size: $font-size-xxxs;
   font-weight: $font-weight-medium;
   line-height: to-rem(24px);
+  transition: color 300ms ease;
+}
+
+.wufoo .#{$ns}-input:focus-within label {
+  @include display-p3(color, $color-gray-1, !important);
 }
 
 .wufoo .#{$ns}-input label span {
@@ -104,25 +110,49 @@
   position: relative;
   box-sizing: border-box;
   height: to-rem(64px);
+  padding: to-rem(20px 16px);
   @include display-p3(border-color, $color-gray-3);
   border-radius: to-rem(8px);
   border-style: solid;
   border-width: to_rem(2px);
   background-color: transparent;
-  color: $color-gray-2;
+  @include display-p3(color, $color-gray-2, !important);
   font-size: $font-size-xs;
-  line-height: to-rem(64px);
+  line-height: to-rem(24px);
   transition: border-color 300ms ease, background-color 300ms ease,
     color 300ms ease;
-  @include display-p3(carat-color, $color-neon-harlequin);
+  @include display-p3(caret-color, $color-neon-harlequin);
 }
 
-// .wufoo .#{$ns}-input.#{$ns}-input--text input::after {
-// }
+.wufoo .#{$ns}-input.#{$ns}-input--text input:focus {
+  @include display-p3(border-color, $color-gray-1);
+  @include display-p3(background-color, $color-gray-9);
+  @include display-p3(color, $color-gray-0, !important);
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text input::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: to-rem(-3px);
+  left: to-rem(-3px);
+  display: block;
+  height: calc(100% + #{to-rem(6px)});
+  width: calc(100% + #{to-rem(6px)});
+  border-radius: to-rem(11px);
+  @include display-p3(background-color, $color-nero);
+  box-shadow: 0 0 0 0 $color-focus-outline;
+  transition: box-shadow 300ms ease;
+  pointer-events: none;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text input:focus::after {
+  box-shadow: 0 0 0 to-rem(5px) $color-focus-outline;
+}
 
 @include has-mouse() {
   .wufoo .#{$ns}-input.#{$ns}-input--text input {
     height: to-rem(48px);
-    line-height: to-rem(48px);
+    padding: to-rem(12px 16px);
   }
 }
