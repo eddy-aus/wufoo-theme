@@ -44,7 +44,6 @@
 }
 
 .wufoo li.error {
-  margin-bottom: 0 !important;
   background-color: transparent !important;
 }
 
@@ -103,7 +102,7 @@
 // 3. Declarations
 // -----------------------------------------------------------------------------
 .wufoo .#{$ns}-input {
-  margin-bottom: to-rem(24px);
+  margin-bottom: to-rem(24px) !important;
 }
 
 .wufoo .#{$ns}-input label {
@@ -223,7 +222,20 @@
   @include display-p3(color, $color-gray-5);
   font-size: $font-size-xxxs;
   line-height: to-rem(16px);
-  pointer-events: none;
+  user-select: none;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text .error {
+  // These props will need to be omitted if text-input's width need to be
+  // configurable.
+  width: calc(100% - #{to-rem(16px)});
+  max-width: to-rem(344px);
+
+  margin-left: to-rem(8px);
+  @include display-p3(color, $color-gray-5);
+  font-size: $font-size-xxxs;
+  font-weight: $font-weight-regular;
+  line-height: to-rem(24px) !important;
   user-select: none;
 }
 
@@ -241,6 +253,11 @@
     order: 2;
     margin-top: to-rem(-8px);
     margin-bottom: to-rem(8px);
+  }
+
+  .wufoo .#{$ns}-input.#{$ns}-input--text .error {
+    order: 4;
+    margin-top: to-rem(4px);
   }
 }
 
