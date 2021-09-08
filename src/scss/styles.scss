@@ -102,6 +102,7 @@
 }
 
 .wufoo .#{$ns}-input label {
+  margin-bottom: to-rem(8px);
   margin-left: to-rem(8px);
   @include display-p3(color, $color-gray-3, !important);
   font-size: $font-size-xxxs;
@@ -164,7 +165,6 @@
   border-radius: to-rem(8px);
   border-style: solid;
   border-width: to_rem(2px);
-  margin-top: to-rem(4px);
   background-color: transparent;
   @include display-p3(color, $color-gray-2, !important);
   font-size: $font-size-xs !important;
@@ -181,8 +181,13 @@
   @include display-p3(color, $color-gray-0, !important);
 }
 
-.wufoo .#{$ns}-input.#{$ns}-input--text input::placeholder::before {
-  content: '    ';
+.wufoo .#{$ns}-input.#{$ns}-input--text input::placeholder {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text input:focus::placeholder {
+  opacity: 1;
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--text input::selection {
@@ -196,10 +201,12 @@
   width: calc(100% - #{to-rem(16px)});
   max-width: to-rem(344px);
 
+  margin-top: to-rem(-8px);
+  margin-bottom: to-rem(8px);
   margin-left: to-rem(8px);
   @include display-p3(color, $color-gray-5);
   font-size: $font-size-xxxs;
-  line-height: to-rem(20px);
+  line-height: to-rem(16px);
   pointer-events: none;
   user-select: none;
 }
@@ -223,6 +230,6 @@
 @include has-mouse() {
   .wufoo .#{$ns}-input.#{$ns}-input--text input {
     height: to-rem(48px);
-    padding: to-rem(12px) to-rem(16px);
+    padding: to-rem(12px) to-rem(12px);
   }
 }
