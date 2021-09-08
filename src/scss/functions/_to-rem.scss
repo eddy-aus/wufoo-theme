@@ -12,7 +12,7 @@
     } @else {
       $converted-values: append(
         $converted-values,
-        #{$number / remove-unit($font-size-system)}rem
+        #{$number / remove-unit($font-size-default)}rem
       );
     }
   }

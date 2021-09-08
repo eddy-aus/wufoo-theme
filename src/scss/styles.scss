@@ -2,18 +2,20 @@
 // -----------------------------------------------------------------------------
 // 1. Imports
 // 2. Reset
+// 3. Declarations
 
-// Imports
+// 1. Imports
 // -----------------------------------------------------------------------------
 @import './utils/tokens';
 @import './functions/to-rem';
 @import './mixins/breakpoint';
 @import './mixins/display-p3';
+@import './mixins/has-mouse';
 
-// Reset
+// 2. Reset
 // -----------------------------------------------------------------------------
-.wufoo {
-  font-family: $font-family-system; // Update this to brand typeface
+.embed #container {
+  margin-bottom: 0;
 }
 
 .embed .wufoo {
@@ -23,18 +25,11 @@
   padding-bottom: 0;
   padding-left: to-rem(16px);
   margin: 0 auto !important;
+  font-family: $font-family-system; // Update this to brand typeface
 }
 
 .wufoo .info {
-  padding-right: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  margin-bottom: 0;
-}
-
-.wufoo .info h2 {
-  margin-bottom: 0;
-  @include display-p3(color, $snow, !important);
+  display: none;
 }
 
 .wufoo li {
@@ -48,11 +43,25 @@
 }
 
 .wufoo label.desc {
+  display: initial;
+  width: auto;
+  padding-bottom: 0;
+}
+
+.wufoo input {
+  padding-top: 0;
   padding-bottom: 0;
 }
 
 .wufoo input:focus-visible {
+  box-sizing: border-box;
   outline: none;
+}
+
+.wufoo textarea:focus-visible {
+  box-sizing: border-box;
+  outline: none;
+  resize: none;
 }
 
 @include breakpoint(s) {
@@ -67,5 +76,53 @@
     max-width: to-rem(848px);
     padding-right: to-rem(40px);
     padding-left: to-rem(40px);
+  }
+}
+
+// 3. Declarations
+// -----------------------------------------------------------------------------
+.wufoo .#{$ns}-input {
+  margin-bottom: to-rem(24px);
+}
+
+.wufoo .#{$ns}-input label {
+  // position: relative;
+  margin-bottom: to-rem(4px); // might need to be padding ??
+  @include display-p3(color, $color-gray-3, !important);
+  font-size: $font-size-xxxs;
+  font-weight: $font-weight-medium;
+  line-height: to-rem(24px);
+}
+
+.wufoo .#{$ns}-input label span {
+  // position: absolute;
+  @include display-p3(color, $color-neon-harlequin, !important);
+  font-weight: inherit;
+}
+
+.wufoo .#{$ns}-input.#{$ns}-input--text input {
+  position: relative;
+  box-sizing: border-box;
+  height: to-rem(64px);
+  @include display-p3(border-color, $color-gray-3);
+  border-radius: to-rem(8px);
+  border-style: solid;
+  border-width: to_rem(2px);
+  background-color: transparent;
+  color: $color-gray-2;
+  font-size: $font-size-xs;
+  line-height: to-rem(64px);
+  transition: border-color 300ms ease, background-color 300ms ease,
+    color 300ms ease;
+  @include display-p3(carat-color, $color-neon-harlequin);
+}
+
+// .wufoo .#{$ns}-input.#{$ns}-input--text input::after {
+// }
+
+@include has-mouse() {
+  .wufoo .#{$ns}-input.#{$ns}-input--text input {
+    height: to-rem(48px);
+    line-height: to-rem(48px);
   }
 }
