@@ -174,13 +174,14 @@
 
 .wufoo .#{$ns}-input input::placeholder,
 .wufoo .#{$ns}-input textarea::placeholder {
-  @include display-p3(color, $color-gray-10);
-  transition: color 250ms ease;
+  opacity: 0;
+  @include display-p3(color, $color-gray-3);
+  transition: opacity 250ms ease;
 }
 
 .wufoo .#{$ns}-input input:focus::placeholder,
 .wufoo .#{$ns}-input textarea:focus::placeholder {
-  @include display-p3(color, $color-gray-3);
+  opacity: 1;
 }
 
 .wufoo .#{$ns}-input input::selection,
@@ -355,7 +356,7 @@
   @include display-p3(background-color, $color-nero);
   box-shadow: 0 0 0 0 rgba($color-focus-outline, 0);
   box-shadow: 0 0 0 0 to-display-p3(rgba($color-focus-outline, 0));
-  transition: box-shadow 250ms ease 0ms;
+  transition: box-shadow 250ms ease;
   pointer-events: none;
 }
 
@@ -366,7 +367,7 @@
 .wufoo .#{$ns}-input.#{$ns}-input--textarea:focus-within div::before {
   box-shadow: 0 0 0 to-rem(3px) $color-focus-outline;
   box-shadow: 0 0 0 to-rem(3px) to-display-p3($color-focus-outline);
-  transition: box-shadow 250ms ease 250ms;
+  transition: box-shadow 250ms ease;
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--textarea textarea {
@@ -374,12 +375,11 @@
   max-width: to-rem(768px);
   padding: to-rem(20px) to-rem(16px);
   line-height: to-rem(24px);
-  transition: height 250ms cubic-bezier(0.6, 0, 0.5, 1.4) 250ms;
+  transition: height 375ms cubic-bezier(0.6, 0, 0.5, 1.4) 250ms;
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--textarea textarea:focus {
   height: to-rem(160px);
-  transition: height 250ms cubic-bezier(0.6, 0, 0.5, 1.4) 0ms;
 }
 
 @include has-mouse() {
@@ -395,6 +395,32 @@
 
 // 3.3 Button
 // -----------------------------------------------------------------------------
+
+.wufoo li.buttons div::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: to-rem(-2px);
+  left: to-rem(-2px);
+  display: block;
+  height: calc(100% + #{to-rem(4px)});
+
+  // Test
+  width: calc(100% + #{to-rem(4px)});
+
+  border-radius: to-rem(10px);
+  @include display-p3(background-color, $color-nero);
+  box-shadow: 0 0 0 0 rgba($color-focus-outline, 0);
+  box-shadow: 0 0 0 0 to-display-p3(rgba($color-focus-outline, 0));
+  transition: box-shadow 250ms ease;
+  pointer-events: none;
+}
+
+.wufoo li.buttons:focus-within div::before {
+  box-shadow: 0 0 0 to-rem(3px) $color-focus-outline;
+  box-shadow: 0 0 0 to-rem(3px) to-display-p3($color-focus-outline);
+}
+
 .wufoo input.btTxt {
   position: relative;
   height: to-rem(64px);
@@ -417,31 +443,6 @@
   @include display-p3(color, $color-gray-10);
 }
 
-.wufoo input.btTxt::before {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  top: to-rem(-2px);
-  left: to-rem(-2px);
-  display: block;
-  height: calc(100% + #{to-rem(4px)});
-
-  // Test
-  width: calc(100% + #{to-rem(4px)});
-
-  border-radius: to-rem(10px);
-  @include display-p3(background-color, $color-nero);
-  box-shadow: 0 0 0 0 rgba($color-focus-outline, 0);
-  box-shadow: 0 0 0 0 to-display-p3(rgba($color-focus-outline, 0));
-  transition: box-shadow 250ms ease;
-  pointer-events: none;
-}
-
-.wufoo input.btTxt::before:focus {
-  box-shadow: 0 0 0 to-rem(3px) $color-focus-outline;
-  box-shadow: 0 0 0 to-rem(3px) to-display-p3($color-focus-outline);
-}
-
 @include has-mouse() {
   .wufoo input.btTxt {
     height: to-rem(48px);
@@ -461,7 +462,7 @@
   }
 }
 
-@include breakpoint(m) {
+@include breakpoint(s) {
   .wufoo input.btTxt {
     width: auto;
   }
