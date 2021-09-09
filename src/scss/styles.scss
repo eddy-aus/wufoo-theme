@@ -308,7 +308,10 @@
   top: to-rem(-3px);
   left: to-rem(-3px);
   display: block;
-  height: calc(100% + #{to-rem(6px)});
+
+  // This should be +6px. Only Firefox renders this correctly. See following CSS
+  // rule.
+  height: calc(100% + #{to-rem(3px)});
 
   // This prop will need to be omitted if text-input's width need to be
   // configurable.
@@ -321,6 +324,10 @@
   box-shadow: 0 0 0 0 to-display-p3(rgba($color-focus-outline, 0));
   transition: box-shadow 250ms cubic-bezier(0.6, 0, 0.5, 1.4);
   pointer-events: none;
+}
+
+.firefox .wufoo .#{$ns}-input.#{$ns}-input--textarea div::before {
+  height: calc(100% + #{to-rem(6px)});
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--textarea:focus-within div::before {
@@ -336,7 +343,7 @@
   transition: height 250ms cubic-bezier(0.6, 0, 0.5, 1.4);
 }
 
-.wufoo .#{$ns}-input.#{$ns}-input--textarea:focus textarea {
+.wufoo .#{$ns}-input.#{$ns}-input--textarea textarea:focus {
   height: to-rem(160px);
 }
 
@@ -346,7 +353,7 @@
     padding: to-rem(12px) to-rem(12px);
   }
 
-  .wufoo .#{$ns}-input.#{$ns}-input--textarea:focus textarea {
+  .wufoo .#{$ns}-input.#{$ns}-input--textarea textarea:focus {
     height: to-rem(144px);
   }
 }
