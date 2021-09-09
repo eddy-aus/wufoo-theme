@@ -1,11 +1,14 @@
 // Table of Contents
-// -----------------------------------------------------------------------------
-// 1. Imports
-// 2. Reset
-// 3. Declarations
+// =============================================================================
+// 1 Imports
+// 2 Reset
+// 3 Declarations
+//   3.1 General
+//   3.2 Text input
+//   3.3 Textarea
 
-// 1. Imports
-// -----------------------------------------------------------------------------
+// 1 Imports
+// =============================================================================
 @import './utils/tokens';
 @import './functions/to-display-p3';
 @import './functions/to-rem';
@@ -13,8 +16,8 @@
 @import './mixins/display-p3';
 @import './mixins/has-mouse';
 
-// 2. Reset
-// -----------------------------------------------------------------------------
+// 2 Reset
+// =============================================================================
 .embed {
   overflow: initial;
 }
@@ -103,7 +106,10 @@
   }
 }
 
-// 3. Declarations
+// 3 Declarations
+// =============================================================================
+
+// 3.1 General
 // -----------------------------------------------------------------------------
 .wufoo .#{$ns}-input {
   margin-bottom: to-rem(24px) !important;
@@ -137,10 +143,102 @@
   font-weight: inherit;
 }
 
-.wufoo .#{$ns}-input.#{$ns}-input--text div {
+.wufoo .#{$ns}-input div {
   position: relative;
 }
 
+.wufoo .#{$ns}-input input,
+.wufoo .#{$ns}-input textarea {
+  @include display-p3(border-color, $color-gray-3);
+  border-radius: to-rem(8px);
+  border-style: solid;
+  border-width: to_rem(2px);
+  background-color: transparent;
+  @include display-p3(color, $color-gray-2, !important);
+  font-size: $font-size-xs !important;
+  transition: border-color 250ms ease, background-color 250ms ease,
+    color 250ms ease;
+  @include display-p3(caret-color, $color-neon-harlequin);
+}
+
+.wufoo .#{$ns}-input input:focus,
+.wufoo .#{$ns}-input textarea:focus {
+  @include display-p3(border-color, $color-gray-1);
+  outline: none;
+  @include display-p3(background-color, $color-gray-9);
+  @include display-p3(color, $color-gray-0, !important);
+}
+
+.wufoo .#{$ns}-input input::placeholder,
+.wufoo .#{$ns}-input textarea::placeholder {
+  opacity: 0;
+  @include display-p3(color, $color-gray-5);
+  transition: opacity 250ms ease;
+}
+
+.wufoo .#{$ns}-input input:focus::placeholder,
+.wufoo .#{$ns}-input textarea:focus::placeholder {
+  opacity: 1;
+}
+
+.wufoo .#{$ns}-input input::selection,
+.wufoo .#{$ns}-input textarea::selection {
+  @include display-p3(background-color, $color-neon-harlequin);
+  @include display-p3(color, $color-nero);
+}
+
+.wufoo .#{$ns}-input.error input,
+.wufoo .#{$ns}-input.error textarea {
+  @include display-p3(border-color, $color-error);
+}
+
+.wufoo .#{$ns}-input .instruct {
+  margin-left: to-rem(8px);
+  line-height: to-rem(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.wufoo .#{$ns}-input .instruct small {
+  @include display-p3(color, $color-gray-5);
+  font-size: $font-size-xxxs;
+}
+
+.wufoo .#{$ns}-input .error {
+  padding-top: 0 !important;
+  margin-left: to-rem(8px) !important;
+  @include display-p3(color, $color-gray-5, !important);
+  font-size: $font-size-xxxs;
+  font-weight: $font-weight-regular;
+  line-height: to-rem(20px) !important;
+  pointer-events: none;
+  user-select: none;
+}
+
+@supports (display: flex) {
+  .wufoo .#{$ns}-input {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .wufoo .#{$ns}-input div {
+    order: 3;
+  }
+
+  .wufoo .#{$ns}-input .instruct {
+    order: 2;
+    margin-top: to-rem(-8px);
+    margin-bottom: to-rem(8px);
+  }
+
+  .wufoo .#{$ns}-input .error {
+    order: 4;
+    margin-top: to-rem(4px) !important;
+  }
+}
+
+// 3.2 Text input
+// -----------------------------------------------------------------------------
 .wufoo .#{$ns}-input.#{$ns}-input--text div::before {
   content: '';
   z-index: -1;
@@ -177,43 +275,7 @@
   max-width: to-rem(360px);
 
   padding: to-rem(20px) to-rem(16px);
-  @include display-p3(border-color, $color-gray-3);
-  border-radius: to-rem(8px);
-  border-style: solid;
-  border-width: to_rem(2px);
-  background-color: transparent;
-  @include display-p3(color, $color-gray-2, !important);
-  font-size: $font-size-xs !important;
   line-height: to-rem(24px);
-  transition: border-color 250ms ease, background-color 250ms ease,
-    color 250ms ease;
-  @include display-p3(caret-color, $color-neon-harlequin);
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text input:focus {
-  @include display-p3(border-color, $color-gray-1);
-  outline: none;
-  @include display-p3(background-color, $color-gray-9);
-  @include display-p3(color, $color-gray-0, !important);
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text input::placeholder {
-  opacity: 0;
-  @include display-p3(color, $color-gray-5);
-  transition: opacity 250ms ease;
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text input:focus::placeholder {
-  opacity: 1;
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text input::selection {
-  @include display-p3(background-color, $color-neon-harlequin);
-  @include display-p3(color, $color-nero);
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text.error input {
-  @include display-p3(border-color, $color-error);
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--text .instruct {
@@ -221,16 +283,6 @@
   // configurable.
   width: calc(100% - #{to-rem(16px)});
   max-width: to-rem(344px);
-
-  margin-left: to-rem(8px);
-  line-height: to-rem(20px);
-  pointer-events: none;
-  user-select: none;
-}
-
-.wufoo .#{$ns}-input.#{$ns}-input--text .instruct small {
-  @include display-p3(color, $color-gray-5);
-  font-size: $font-size-xxxs;
 }
 
 .wufoo .#{$ns}-input.#{$ns}-input--text .error {
@@ -238,37 +290,6 @@
   // configurable.
   width: calc(100% - #{to-rem(16px)});
   max-width: to-rem(344px);
-
-  padding-top: 0 !important;
-  margin-left: to-rem(8px) !important;
-  @include display-p3(color, $color-gray-5, !important);
-  font-size: $font-size-xxxs;
-  font-weight: $font-weight-regular;
-  line-height: to-rem(20px) !important;
-  pointer-events: none;
-  user-select: none;
-}
-
-@supports (display: flex) {
-  .wufoo .#{$ns}-input {
-    display: flex !important;
-    flex-direction: column;
-  }
-
-  .wufoo .#{$ns}-input.#{$ns}-input--text div {
-    order: 3;
-  }
-
-  .wufoo .#{$ns}-input.#{$ns}-input--text .instruct {
-    order: 2;
-    margin-top: to-rem(-8px);
-    margin-bottom: to-rem(8px);
-  }
-
-  .wufoo .#{$ns}-input.#{$ns}-input--text .error {
-    order: 4;
-    margin-top: to-rem(4px) !important;
-  }
 }
 
 @include has-mouse() {
