@@ -319,7 +319,7 @@
   width: 100%;
   max-width: to-rem(360px);
 
-  padding: to-rem(20px) to-rem(16px);
+  padding: to-rem(18px) to-rem(16px);
   line-height: to-rem(24px);
 }
 
@@ -340,7 +340,7 @@
 @include has-mouse() {
   .wufoo .#{$ns}-input.#{$ns}-input--text input {
     height: to-rem(48px);
-    padding: to-rem(12px) to-rem(12px);
+    padding: to-rem(10px) to-rem(12px);
   }
 }
 
@@ -383,7 +383,7 @@
 .wufoo .#{$ns}-input.#{$ns}-input--textarea textarea {
   overflow: hidden;
   height: to-rem(64px);
-  padding: to-rem(20px) to-rem(16px);
+  padding: to-rem(18px) to-rem(16px);
   line-height: to-rem(24px);
   transition: height 375ms cubic-bezier(0.6, 0, 0.5, 1.4) 250ms;
 }
@@ -396,7 +396,7 @@
 @include has-mouse() {
   .wufoo .#{$ns}-input.#{$ns}-input--textarea textarea {
     height: to-rem(48px);
-    padding: to-rem(12px) to-rem(12px);
+    padding: to-rem(10px) to-rem(12px);
   }
 
   .wufoo .#{$ns}-input.#{$ns}-input--textarea textarea:focus {
@@ -436,7 +436,7 @@
   height: to-rem(64px);
   width: 100%;
   min-width: to-rem(120px);
-  padding: to-rem(24px);
+  padding: to-rem(22px) to-rem(24px);
   @include display-p3(border-color, $color-neon-harlequin);
   border-radius: to-rem(8px);
   border-style: solid;
@@ -458,8 +458,8 @@
 @include has-mouse() {
   .wufoo input.btTxt {
     height: to-rem(48px);
-    padding-top: to-rem(12px);
-    padding-bottom: to-rem(12px);
+    padding-top: to-rem(10px);
+    padding-bottom: to-rem(10px);
   }
 
   .wufoo input.btTxt:hover {
