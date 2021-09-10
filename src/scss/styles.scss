@@ -69,12 +69,14 @@
   box-sizing: border-box;
   padding-top: 0;
   padding-bottom: 0;
-  margin-right: 0;
-  margin-left: 0;
 }
 
 .wufoo input:focus-visible {
   outline: none;
+}
+
+.wufoo li.buttons input {
+  margin-right: 0;
 }
 
 .wufoo textarea {
@@ -403,7 +405,6 @@
 
 // 3.3 Button
 // -----------------------------------------------------------------------------
-
 .wufoo li.buttons div::before {
   content: '';
   z-index: -1;
@@ -443,7 +444,7 @@
   @include display-p3(color, $color-neon-harlequin);
   font-size: $font-size-xxs;
   font-weight: $font-weight-bold;
-  line-height: to-rem(64px);
+  line-height: to-rem(24px);
   transition: background-color 250ms ease, color 250ms ease;
 }
 
@@ -458,7 +459,6 @@
     height: to-rem(48px);
     padding-top: to-rem(12px);
     padding-bottom: to-rem(12px);
-    line-height: to-rem(48px);
   }
 
   .wufoo input.btTxt:hover {
