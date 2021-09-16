@@ -147,6 +147,7 @@
 html,
 body {
   animation-duration: 250ms;
+  animation-fill-mode: forwards;
   animation-name: show-background;
   animation-iteration-count: 1;
   animation-timing-function: ease;
@@ -155,6 +156,7 @@ body {
 .wufoo {
   animation-delay: 250ms;
   animation-duration: 250ms;
+  animation-fill-mode: forwards;
   animation-name: show-background;
   animation-iteration-count: 1;
   animation-timing-function: ease;
