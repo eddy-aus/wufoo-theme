@@ -146,7 +146,6 @@
 
 html,
 body {
-  @include display-p3(background-color, rgba($color-gray-10, 0));
   animation-duration: 250ms;
   animation-fill-mode: forwards;
   animation-name: show-background;
@@ -155,7 +154,6 @@ body {
 }
 
 .wufoo {
-  opacity: 0;
   animation-delay: 250ms;
   animation-duration: 250ms;
   animation-fill-mode: forwards;
