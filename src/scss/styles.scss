@@ -126,6 +126,40 @@
 
 // 3.1 General
 // -----------------------------------------------------------------------------
+@keyframes show-background {
+  0% {
+    @include display-p3(background-color, rgba($color-gray-10, 0));
+  }
+  100% {
+    @include display-p3(background-color, rgba($color-gray-10, 1));
+  }
+}
+
+@keyframes show-form {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+html,
+body {
+  animation-duration: 250ms;
+  animation-name: show-background;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+.wufoo {
+  animation-delay: 250ms;
+  animation-duration: 250ms;
+  animation-name: show-background;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
 .wufoo .#{$ns}-input {
   margin-bottom: to-rem(24px) !important;
 }
