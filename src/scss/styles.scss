@@ -34,11 +34,11 @@
 .embed .wufoo {
   box-sizing: border-box;
   width: 100%;
-  padding-right: to-rem(16px);
+  padding-right: to-rem(24px);
   padding-bottom: 0;
-  padding-left: to-rem(16px);
+  padding-left: to-rem(24px);
   margin: 0 auto !important;
-  font-family: $font-family-system; // Update this to brand typeface
+  font-family: $font-family-body-copy;
 }
 
 .wufoo .info {
@@ -101,10 +101,17 @@
   margin-left: 0;
 }
 
+@include breakpoint(xs) {
+  .embed .wufoo {
+    padding-right: to-rem(40px);
+    padding-left: to-rem(40px);
+  }
+}
+
 @include breakpoint(s) {
   .embed .wufoo {
-    padding-right: to-rem(24px);
-    padding-left: to-rem(24px);
+    padding-right: to-rem(64px);
+    padding-left: to-rem(64px);
   }
 
   .wufoo li.buttons {
@@ -115,9 +122,16 @@
 
 @include breakpoint(m) {
   .embed .wufoo {
-    max-width: to-rem(848px);
-    padding-right: to-rem(40px);
-    padding-left: to-rem(40px);
+    padding-right: to-rem(104px);
+    padding-left: to-rem(104px);
+  }
+}
+
+@include breakpoint(xl) {
+  .embed .wufoo {
+    max-width: to-rem(1448px);
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -162,6 +176,10 @@ body {
   animation-name: show-form;
   animation-iteration-count: 1;
   animation-timing-function: ease;
+}
+
+.wufoo ul {
+  max-width: to-rem(768px);
 }
 
 .wufoo .#{$ns}-input {
